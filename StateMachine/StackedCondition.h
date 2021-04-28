@@ -4,8 +4,9 @@
 #include <vector>
 #include <utility>
 #include <memory>
-#include <Utils/Macros/Macros.h>
 #include "BaseCondition.h"
+#include "../Macros/Macros.h"
+
 
 namespace Utils
 {

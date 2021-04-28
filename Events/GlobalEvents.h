@@ -1,5 +1,6 @@
 #pragma once
-#include <Utils\Events\Dispatcher.h>
+
+#include "Dispatcher.h"
 
 namespace Utils
 {

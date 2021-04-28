@@ -10,8 +10,8 @@
 #include <typeinfo>
 #include <typeindex>
 
-#include <Utils/Events/Event.h>
-#include <Utils/Macros/Macros.h>
+#include "Event.h"
+#include "../Macros/Macros.h"
 
 namespace Utils
 {
