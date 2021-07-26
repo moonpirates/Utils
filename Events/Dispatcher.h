@@ -94,7 +94,7 @@ namespace Utils
 			if (it->second == context)
 			{
 				std::cout << "\tRemoving" << std::endl;
-				CallbackInfo* info = &*it;
+				//CallbackInfo* info = &*it;
 				it = callbackPairs->erase(it);
 			}
 			else
