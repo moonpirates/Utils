@@ -79,7 +79,7 @@ namespace Utils
 				}
 				
 				char c;
-				std::cout << "Quit? y/n" << std::endl;
+				std::cout << "Quit? y/n: ";
 				std::cin >> c;
 				if (c == 'y')
 				{
