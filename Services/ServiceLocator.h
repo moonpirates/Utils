@@ -9,14 +9,14 @@ namespace Utils
 {
 	using ServiceMap = std::unordered_map<std::size_t, BaseService*>;
 
-	class ServiceProvider final
+	class ServiceLocator final
 	{
 	public:
-		ServiceProvider() : services(ServiceMap())
+		ServiceLocator() : services(ServiceMap())
 		{
 		}
 		
-		~ServiceProvider()
+		~ServiceLocator()
 		{
 			for (auto pair : services)
 			{
