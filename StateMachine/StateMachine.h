@@ -20,7 +20,7 @@ namespace Utils
 			std::cout << "Initialized base statemachine" << std::endl;
 		}
 		
-		~StateMachine()
+		virtual ~StateMachine()
 		{
 			for (auto stateEntry : linkMap)
 			{
@@ -33,25 +33,29 @@ namespace Utils
 		}
 		
 		template <typename StateType>
-		StateType* CreateState()
+		StateType& CreateState()
 		{
 			StateType* state = new StateType();
 			linkMap.insert(std::make_pair(state, std::vector<StateLink>()));
 			
-			return state;
+			std::cout << "State created at " << state << std::endl;
+			
+			return *state;
 		}
 		
 		template <typename ConditionType>
-		void AddLink(BaseState* fromState, BaseState* toState) // const fromState?
+		void AddLink(BaseState& fromState, BaseState& toState) // const fromState?
 		{
-			LinkMap::iterator pair = linkMap.find(fromState);
+			std::cout << "Finding state at " << &fromState << std::endl;
+			
+			LinkMap::iterator pair = linkMap.find(&fromState);
 			if (pair == linkMap.end())
 			{
 				std::cerr << "Unknown state" << std::endl;
 				return;
 			}
 			
-			pair->second.push_back(std::make_pair(new ConditionType(), toState));
+			pair->second.push_back(std::make_pair(new ConditionType(), &toState));
 		}
 		
 		void Start()
@@ -62,7 +66,7 @@ namespace Utils
 				return;
 			}
 			
-			Transit(linkMap.begin()->first);
+			Transit(*(linkMap.begin()->first));
 			
 			while (true)
 			{
@@ -74,7 +78,7 @@ namespace Utils
 					
 					if (nextState != nullptr)
 					{
-						Transit(nextState);
+						Transit(*nextState);
 					}
 				}
 				
@@ -89,9 +93,9 @@ namespace Utils
 		}
 
 	protected:
-		void Transit(BaseState* state)
+		void Transit(BaseState& state)
 		{
-			if (linkMap.count(state) == 0)
+			if (linkMap.count(&state) == 0)
 			{
 				std::cerr << "Unknown state" << std::endl;
 				return;
@@ -106,7 +110,7 @@ namespace Utils
 				currentState->Exit();
 			}
 			
-			currentState = state;
+			currentState = &state;
 			currentState->Enter();
 			for (auto stateLink : linkMap.at(currentState))
 			{

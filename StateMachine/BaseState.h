@@ -11,7 +11,7 @@ namespace Utils
 	public:
 		BaseState() : name("Unnamed state") {}
 		BaseState(const std::string name) : name(name) {}
-		virtual ~BaseState() {};
+		virtual ~BaseState() {}
 		virtual void Enter() = 0;
 		virtual void Exit() = 0;
 	private:
