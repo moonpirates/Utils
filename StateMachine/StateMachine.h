@@ -3,6 +3,7 @@
 #include <iostream>
 #include <vector>
 #include <map>
+#include <optional>
 
 #include "BaseCondition.h"
 #include "BaseState.h"
@@ -15,7 +16,7 @@ namespace Utils
 	class StateMachine
 	{
 	public:
-		StateMachine() : linkMap(LinkMap())
+		StateMachine() : linkMap(LinkMap()), currentState(nullptr)
 		{
 			std::cout << "Initialized base statemachine" << std::endl;
 		}

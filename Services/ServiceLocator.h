@@ -20,7 +20,6 @@ namespace Utils
 		{
 			for (auto pair : services)
 			{
-				std::cout << "deleting: " << typeid(pair.second).name() << " " << sizeof(*(pair.second)) << " size." << std::endl;
 				delete pair.second;
 			}
 		}
@@ -31,15 +30,11 @@ namespace Utils
 			std::size_t key = typeid(T).hash_code();
 			ServiceMap::iterator it = services.find(key);
 			
-			std::cout << "Key: " << key << std::endl;
-			
 			if (it != services.end())
 			{
-				std::cout << "Gevonden" << std::endl;
 				return *(T*)(it->second);
 			}
 			
-			std::cout << "Aanmaken" << std::endl;
 			T* service = new T();
 			services.insert(std::pair<std::size_t, BaseService*>(key, service));
 			
