@@ -10,9 +10,10 @@ namespace Utils
 {
 	class CallbackService : public BaseService
 	{
-		using Clock = std::chrono::high_resolution_clock;
-		using Time = std::chrono::steady_clock::time_point;
-		using Duration = std::chrono::steady_clock::duration;
+		using duration = std::chrono::high_resolution_clock::duration;
+		using nanoseconds = std::chrono::nanoseconds;
+		using clock = std::chrono::high_resolution_clock;
+		using time_point = std::chrono::high_resolution_clock::time_point;
 
 	public:
 		CallbackService();
@@ -29,7 +30,6 @@ namespace Utils
 		std::set<Updatable*> updatables;
 		bool running;
 		int targetFps;
-		std::chrono::nanoseconds timestep;
 
 		void OnUpdate();
 	};

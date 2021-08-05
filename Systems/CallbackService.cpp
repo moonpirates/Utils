@@ -1,6 +1,6 @@
 #include "CallbackService.h"
 
-Utils::CallbackService::CallbackService() : updatables(std::set<Updatable*>()), running(false), targetFps(DEFAULT_FPS), timestep()
+Utils::CallbackService::CallbackService() : updatables(std::set<Updatable*>()), running(false), targetFps(DEFAULT_FPS)
 {
 	std::cout << "Started" << std::endl;
 	Start();
@@ -34,26 +34,27 @@ void Utils::CallbackService::Start()
 	}
 
 	running = true;
-	timestep = std::chrono::nanoseconds(1 / targetFps);
 
-	Time previousTime = Clock::now();
+	nanoseconds timestep = nanoseconds(1000000000 / targetFps);
+	time_point previousNow = clock::now();
+	duration time = nanoseconds(0);
+	unsigned int frameCount = 0;
 
-	Duration lag;
-
-	while (running)
+	while (true)
 	{
-		Duration deltaTime = Clock::now() - previousTime;
-		previousTime = Clock::now();
-
-		lag += deltaTime;
-
-		if (lag > timestep)
+		time_point now = clock::now();
+		duration deltaTime = now - previousNow;
+		previousNow = now;
+		time += deltaTime;
+		
+		while (time >= timestep)
 		{
-			std::cout << "Update!" << std::endl;
-			lag = Duration();
+			std::cout << "[" << frameCount << "] step at time: " << std::chrono::duration_cast<std::chrono::nanoseconds>(time).count() << std::endl;
+			time -= timestep;
+			frameCount++;
 		}
-
 	}
+
 }
 
 void Utils::CallbackService::Stop()
