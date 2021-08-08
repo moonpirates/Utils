@@ -5,6 +5,7 @@
 #include <chrono>
 #include "../Services/BaseService.h"
 #include "Updatable.h"
+#include "Renderable.h"
 
 namespace Utils
 {
@@ -19,6 +20,8 @@ namespace Utils
 		CallbackService();
 		void AddUpdatable(Updatable& updatable);
 		void RemoveUpdatable(Updatable& updatable);
+		void AddRenderable(Renderable& updatable);
+		void RemoveRenderable(Renderable& updatable);
 		int GetTargetFps();
 		void SetTargetFps(int targetFps);
 		void Start();
@@ -28,10 +31,12 @@ namespace Utils
 		const int DEFAULT_FPS = 60;
 
 		std::set<Updatable*> updatables;
+		std::set<Renderable*> renderables;
 		bool running;
 		int targetFps;
 
 		void OnUpdate();
+		void OnRender();
 	};
 }
 

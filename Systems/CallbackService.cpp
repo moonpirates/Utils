@@ -1,6 +1,10 @@
 #include "CallbackService.h"
 
-Utils::CallbackService::CallbackService() : updatables(std::set<Updatable*>()), running(false), targetFps(DEFAULT_FPS)
+Utils::CallbackService::CallbackService() : 
+	updatables(std::set<Updatable*>()), 
+	renderables(std::set<Renderable*>()),
+	running(false), 
+	targetFps(DEFAULT_FPS)
 {
 	std::cout << "Started" << std::endl;
 	Start();
@@ -14,6 +18,16 @@ void Utils::CallbackService::AddUpdatable(Updatable& updatable)
 void Utils::CallbackService::RemoveUpdatable(Updatable& updatable)
 {
 	updatables.erase(&updatable);
+}
+
+void Utils::CallbackService::AddRenderable(Renderable& renderable)
+{
+	renderables.insert(&renderable);
+}
+
+void Utils::CallbackService::RemoveRenderable(Renderable& renderable)
+{
+	renderables.erase(&renderable);
 }
 
 int Utils::CallbackService::GetTargetFps()
@@ -47,14 +61,17 @@ void Utils::CallbackService::Start()
 		previousNow = now;
 		time += deltaTime;
 		
+		// Sleeps to render at desired framerate
+		// What do we pass into Update() ?
 		while (time >= timestep)
 		{
 			std::cout << "[" << frameCount << "] step at time: " << std::chrono::duration_cast<std::chrono::nanoseconds>(time).count() << std::endl;
 			time -= timestep;
+			OnUpdate();
+			OnRender();
 			frameCount++;
 		}
 	}
-
 }
 
 void Utils::CallbackService::Stop()
@@ -67,5 +84,13 @@ void Utils::CallbackService::OnUpdate()
 	for (auto updatable : updatables)
 	{
 		updatable->Update();
+	}
+}
+
+void Utils::CallbackService::OnRender()
+{
+	for (auto renderable : renderables)
+	{
+		renderable->Render();
 	}
 }
