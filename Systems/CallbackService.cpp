@@ -6,8 +6,6 @@ Utils::CallbackService::CallbackService() :
 	running(false), 
 	targetFps(DEFAULT_FPS)
 {
-	std::cout << "Started" << std::endl;
-	Start();
 }
 
 void Utils::CallbackService::AddUpdatable(Updatable& updatable)
