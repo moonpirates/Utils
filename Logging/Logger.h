@@ -60,24 +60,24 @@
 
 namespace Utils
 {
-    class Logger
-    {
-    public:
-        
-        static void Init(int logLevel, bool useColors)
-        {
-            Utils::Logger::logLevel = logLevel;
-            Utils::Logger::useColors = useColors;
-        }
-        
-        template<typename T>
-        static void Log(int level, std::string filename, int line, T message)
-        {
-            auto now = std::chrono::system_clock::now();
-            std::time_t time_now = std::chrono::system_clock::to_time_t(now);
-            std::tm t;
-            
-            // Multi-compiler solution from: https://stackoverflow.com/a/38034148
+	class Logger
+	{
+	public:
+
+		static void Init(int logLevel, bool useColors)
+		{
+			Utils::Logger::logLevel = logLevel;
+			Utils::Logger::useColors = useColors;
+		}
+
+		template<typename T>
+		static void Log(int level, std::string filename, int line, T message)
+		{
+			auto now = std::chrono::system_clock::now();
+			std::time_t time_now = std::chrono::system_clock::to_time_t(now);
+			std::tm t;
+
+			// Multi-compiler solution from: https://stackoverflow.com/a/38034148
 #if defined(__unix__)
 			localtime_r(&time_now, &t);
 #elif defined(_MSC_VER)
@@ -88,13 +88,13 @@ namespace Utils
 			t = *std::localtime(&time_now);
 #endif
 
-            auto datetime = std::put_time(&t, "%Y-%m-%d %H:%M:%S");
-            message(std::cout, level, datetime, filename, line);
-        }
-    
-    private:
-        inline static int logLevel = 0;
-        inline static bool useColors = true;
-    };
+			auto datetime = std::put_time(&t, "%Y-%m-%d %H:%M:%S");
+			message(std::cout, level, datetime, filename, line);
+		}
+
+	private:
+		inline static int logLevel = 0;
+		inline static bool useColors = true;
+	};
 
 }
