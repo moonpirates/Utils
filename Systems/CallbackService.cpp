@@ -52,7 +52,7 @@ void Utils::CallbackService::Start()
 	duration time = nanoseconds(0);
 	unsigned int frameCount = 0;
 
-	while (true)
+	while (running)
 	{
 		time_point now = clock::now();
 		duration deltaTime = now - previousNow;
