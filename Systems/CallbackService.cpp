@@ -63,7 +63,7 @@ void Utils::CallbackService::Start()
 		// What do we pass into Update() ?
 		while (time >= timestep)
 		{
-			std::cout << "[" << frameCount << "] step at time: " << std::chrono::duration_cast<std::chrono::nanoseconds>(time).count() << std::endl;
+			//std::cout << "[" << frameCount << "] step at time: " << std::chrono::duration_cast<std::chrono::nanoseconds>(time).count() << std::endl;
 			time -= timestep;
 			OnUpdate();
 			OnRender();
