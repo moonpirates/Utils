@@ -2,7 +2,7 @@
 
 namespace Utils
 {
-	class DeprecatedTime
+	class TimeUtil
 	{
 	public:
 		static float DeltaTime;

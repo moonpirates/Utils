@@ -4,6 +4,7 @@
 #include <set>
 #include <chrono>
 #include "../Macros/Macros.h"
+#include "../TimeUtil.h"
 #include "../Services/BaseService.h"
 #include "Updatable.h"
 #include "Renderable.h"

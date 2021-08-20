@@ -49,6 +49,7 @@ void Utils::CallbackService::Start()
 
 	nanoseconds timestep = nanoseconds(1000000000 / targetFps);
 	time_point previousNow = clock::now();
+	time_point previousStep = clock::now();
 	duration time = nanoseconds(0);
 	unsigned int frameCount = 0;
 
@@ -65,6 +66,10 @@ void Utils::CallbackService::Start()
 		{
 			//std::cout << "[" << frameCount << "] step at time: " << std::chrono::duration_cast<std::chrono::nanoseconds>(time).count() << std::endl;
 			time -= timestep;
+
+			Utils::TimeUtil::DeltaTime = std::chrono::duration_cast<std::chrono::nanoseconds>(clock::now() - previousStep).count() / 1000000000.0f;
+			previousStep = clock::now();
+
 			OnUpdate();
 			OnRender();
 			frameCount++;
