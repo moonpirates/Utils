@@ -6,5 +6,6 @@ namespace Utils
 	{
 	public:
 		static float DeltaTime;
+		static float TimeSinceStart;
 	};
 }

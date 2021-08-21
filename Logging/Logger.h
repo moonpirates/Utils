@@ -38,7 +38,7 @@
 #define LOG_ERROR(message) LOG_INTERNAL(LOG_LEVEL_ERROR, message)
 
 // Global log methods
-#define LOG_INTERNAL(logLevel, message) Utils::Logger::Log(logLevel, __FILENAME__, __LINE__, [](auto &out, int level, auto datetime, std::string filename, int line) \
+#define LOG_INTERNAL(logLevel, message) Utils::Logger::Log(logLevel, __FILENAME__, __LINE__, [&](auto &out, int level, auto datetime, std::string filename, int line) \
 { \
     out << std::left \
     << GET_DIMMED_COLOR(level) << datetime \

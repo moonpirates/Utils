@@ -56,19 +56,22 @@ void Utils::CallbackService::Start()
 	while (running)
 	{
 		time_point now = clock::now();
-		duration deltaTime = now - previousNow;
+		duration delta = now - previousNow;
 		previousNow = now;
-		time += deltaTime;
-		
+		time += delta;
+
 		// Sleeps to render at desired framerate
 		// What do we pass into Update() ?
 		while (time >= timestep)
 		{
-			//std::cout << "[" << frameCount << "] step at time: " << std::chrono::duration_cast<std::chrono::nanoseconds>(time).count() << std::endl;
 			time -= timestep;
 
-			Utils::TimeUtil::DeltaTime = std::chrono::duration_cast<std::chrono::nanoseconds>(clock::now() - previousStep).count() / 1000000000.0f;
-			previousStep = clock::now();
+			float deltaTime = std::chrono::duration_cast<std::chrono::nanoseconds>(now - previousStep).count() / 1000000000.0f;
+			Utils::TimeUtil::DeltaTime = deltaTime;
+			Utils::TimeUtil::TimeSinceStart += deltaTime;
+
+			//LOG("[" << frameCount << "] deltaTime: " << Utils::TimeUtil::DeltaTime <<  " " << Utils::TimeUtil::TimeSinceStart);
+			previousStep = now;
 
 			OnUpdate();
 			OnRender();
