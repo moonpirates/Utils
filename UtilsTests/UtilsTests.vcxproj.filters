@@ -27,6 +27,9 @@
     <ClCompile Include="src\StateMachine\Tests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\XmlParser\Tests.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\StateMachine\TestData\OffState.h">
@@ -41,5 +44,8 @@
     <ClInclude Include="src\StateMachine\TestData\ToggleSwitchCondition.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="src\XmlParser\test.xml" />
   </ItemGroup>
 </Project>

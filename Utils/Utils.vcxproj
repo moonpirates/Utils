@@ -170,10 +170,16 @@
     <ClInclude Include="src\Systems\Renderable.h" />
     <ClInclude Include="src\Systems\Updatable.h" />
     <ClInclude Include="src\TimeUtil.h" />
+    <ClInclude Include="src\XmlParser\Lexer.h" />
+    <ClInclude Include="src\XmlParser\XmlDoc.h" />
+    <ClInclude Include="src\XmlParser\XmlElement.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Systems\CallbackService.cpp" />
     <ClCompile Include="src\TimeUtil.cpp" />
+    <ClCompile Include="src\XmlParser\Lexer.cpp" />
+    <ClCompile Include="src\XmlParser\XmlDoc.cpp" />
+    <ClCompile Include="src\XmlParser\XmlElement.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

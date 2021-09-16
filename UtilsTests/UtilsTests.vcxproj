@@ -167,12 +167,16 @@
     <ClCompile Include="src\StateMachine\TestData\OnState.cpp" />
     <ClCompile Include="src\StateMachine\Tests.cpp" />
     <ClCompile Include="src\StateMachine\TestData\ToggleSwitchCondition.cpp" />
+    <ClCompile Include="src\XmlParser\Tests.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\StateMachine\TestData\OffState.h" />
     <ClInclude Include="src\StateMachine\TestData\OnState.h" />
     <ClInclude Include="src\StateMachine\TestData\SwitchStateMachine.h" />
     <ClInclude Include="src\StateMachine\TestData\ToggleSwitchCondition.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="src\XmlParser\test.xml" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
