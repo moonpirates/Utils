@@ -96,6 +96,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -110,6 +111,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -124,6 +126,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -138,6 +141,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -147,10 +151,33 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="src\TestUtils.h" />
+    <ClInclude Include="src\Events\Dispatcher.h" />
+    <ClInclude Include="src\Events\Event.h" />
+    <ClInclude Include="src\Events\GlobalEvents.h" />
+    <ClInclude Include="src\Logging\Logger.h" />
+    <ClInclude Include="src\Macros\Macros.h" />
+    <ClInclude Include="src\Services\BaseService.h" />
+    <ClInclude Include="src\Services\GlobalServiceLocator.h" />
+    <ClInclude Include="src\Services\ServiceLocator.h" />
+    <ClInclude Include="src\StateMachine\BaseCondition.h" />
+    <ClInclude Include="src\StateMachine\BaseState.h" />
+    <ClInclude Include="src\StateMachine\Example\OffState.h" />
+    <ClInclude Include="src\StateMachine\Example\OnState.h" />
+    <ClInclude Include="src\StateMachine\Example\SwitchStateMachine.h" />
+    <ClInclude Include="src\StateMachine\Example\ToggleSwitchCondition.h" />
+    <ClInclude Include="src\StateMachine\StateMachine.h" />
+    <ClInclude Include="src\Systems\CallbackService.h" />
+    <ClInclude Include="src\Systems\Renderable.h" />
+    <ClInclude Include="src\Systems\Updatable.h" />
+    <ClInclude Include="src\TimeUtil.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\TestUtils.cpp" />
+    <ClCompile Include="src\StateMachine\Example\OffState.cpp" />
+    <ClCompile Include="src\StateMachine\Example\OnState.cpp" />
+    <ClCompile Include="src\StateMachine\Example\SwitchStateMachine.cpp" />
+    <ClCompile Include="src\StateMachine\Example\ToggleSwitchCondition.cpp" />
+    <ClCompile Include="src\Systems\CallbackService.cpp" />
+    <ClCompile Include="src\TimeUtil.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
