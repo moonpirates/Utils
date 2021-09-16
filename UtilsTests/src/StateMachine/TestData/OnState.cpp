@@ -1,6 +1,6 @@
 #include "OnState.h"
 
-OnState::OnState() : Utils::BaseState()
+OnState::OnState() : Utils::BaseState("On state")
 {
 	std::cout << "Created ON state" << std::endl;
 }

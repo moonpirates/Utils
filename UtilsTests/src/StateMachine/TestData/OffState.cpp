@@ -1,6 +1,6 @@
 #include "OffState.h"
 
-OffState::OffState() : Utils::BaseState()
+OffState::OffState() : Utils::BaseState("Off state")
 {
 	std::cout << "Created OFF state" << std::endl;
 }

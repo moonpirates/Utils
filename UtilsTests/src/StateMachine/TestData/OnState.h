@@ -1,7 +1,7 @@
 #pragma once
 
 #include <iostream>
-#include "../BaseState.h"
+#include <StateMachine/BaseState.h>
 
 class OnState : public Utils::BaseState
 {

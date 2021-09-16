@@ -9,12 +9,11 @@ namespace Utils
 	class BaseState
 	{
 	public:
-		BaseState() : name("Unnamed state") {}
-		BaseState(const std::string name) : name(name) {}
+		BaseState() : Name("Unnamed state") {}
+		BaseState(const std::string name) : Name(name) {}
 		virtual ~BaseState() {}
 		virtual void Enter() = 0;
 		virtual void Exit() = 0;
-	private:
-		std::string name;
+		std::string Name;
 	};
 }

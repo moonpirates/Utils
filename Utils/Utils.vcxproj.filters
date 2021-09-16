@@ -39,18 +39,6 @@
     <ClInclude Include="src\Services\ServiceLocator.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\StateMachine\Example\OffState.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\StateMachine\Example\OnState.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\StateMachine\Example\SwitchStateMachine.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\StateMachine\Example\ToggleSwitchCondition.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\StateMachine\BaseCondition.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -74,18 +62,6 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\StateMachine\Example\OffState.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\StateMachine\Example\OnState.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\StateMachine\Example\SwitchStateMachine.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\StateMachine\Example\ToggleSwitchCondition.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\Systems\CallbackService.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>

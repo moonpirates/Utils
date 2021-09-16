@@ -97,6 +97,7 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
+      <AdditionalIncludeDirectories>$(ProjectDir)src/</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -112,6 +113,7 @@
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
+      <AdditionalIncludeDirectories>$(ProjectDir)src/</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -127,6 +129,7 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
+      <AdditionalIncludeDirectories>$(ProjectDir)src/</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -142,6 +145,7 @@
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
+      <AdditionalIncludeDirectories>$(ProjectDir)src/</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -161,10 +165,6 @@
     <ClInclude Include="src\Services\ServiceLocator.h" />
     <ClInclude Include="src\StateMachine\BaseCondition.h" />
     <ClInclude Include="src\StateMachine\BaseState.h" />
-    <ClInclude Include="src\StateMachine\Example\OffState.h" />
-    <ClInclude Include="src\StateMachine\Example\OnState.h" />
-    <ClInclude Include="src\StateMachine\Example\SwitchStateMachine.h" />
-    <ClInclude Include="src\StateMachine\Example\ToggleSwitchCondition.h" />
     <ClInclude Include="src\StateMachine\StateMachine.h" />
     <ClInclude Include="src\Systems\CallbackService.h" />
     <ClInclude Include="src\Systems\Renderable.h" />
@@ -172,10 +172,6 @@
     <ClInclude Include="src\TimeUtil.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\StateMachine\Example\OffState.cpp" />
-    <ClCompile Include="src\StateMachine\Example\OnState.cpp" />
-    <ClCompile Include="src\StateMachine\Example\SwitchStateMachine.cpp" />
-    <ClCompile Include="src\StateMachine\Example\ToggleSwitchCondition.cpp" />
     <ClCompile Include="src\Systems\CallbackService.cpp" />
     <ClCompile Include="src\TimeUtil.cpp" />
   </ItemGroup>

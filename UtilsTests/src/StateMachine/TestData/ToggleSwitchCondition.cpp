@@ -1,6 +1,6 @@
 #include "ToggleSwitchCondition.h"
 
-ToggleSwitchCondition::ToggleSwitchCondition()
+ToggleSwitchCondition::ToggleSwitchCondition() : valid(false)
 {
 	std::cout << "Created ToggleSwitchCondition" << std::endl;
 }
@@ -12,9 +12,10 @@ ToggleSwitchCondition::~ToggleSwitchCondition()
 
 bool ToggleSwitchCondition::IsValid()
 {
-	std::cout << "Type 's' to switch: ";
-	std::string input;
-	std::cin >> input;
-	
-	return input == "s";
+	return valid;
+}
+
+void ToggleSwitchCondition::SetValid()
+{
+	valid = true;
 }

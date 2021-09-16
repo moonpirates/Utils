@@ -7,22 +7,32 @@
 
 #include "BaseCondition.h"
 #include "BaseState.h"
+#include "Systems/Updatable.h"
+#include "Systems/CallbackService.h"
+#include "Services/GlobalServiceLocator.h"
 
 namespace Utils
 {
 	using StateLink = std::pair<BaseCondition*, BaseState*>;
 	using LinkMap = std::map<BaseState*, std::vector<StateLink>>;
 
-	class StateMachine
+	class StateMachine : public Updatable
 	{
 	public:
-		StateMachine() : linkMap(LinkMap()), currentState(nullptr)
+		BaseState* CurrentState;
+
+		StateMachine() : linkMap(LinkMap()), CurrentState(nullptr), callbackService(Utils::GlobalServiceLocator::Get<CallbackService>()), running(false)
 		{
-			std::cout << "Initialized base statemachine" << std::endl;
+			std::cout << "Initialized base state machine" << std::endl;
 		}
 		
 		virtual ~StateMachine()
 		{
+			if (running)
+			{
+				Stop();
+			}
+
 			for (auto stateEntry : linkMap)
 			{
 				delete stateEntry.first;
@@ -34,86 +44,103 @@ namespace Utils
 		}
 		
 		template <typename StateType>
-		StateType& CreateState()
+		StateType* CreateState()
 		{
 			StateType* state = new StateType();
 			linkMap.insert(std::make_pair(state, std::vector<StateLink>()));
 			
 			std::cout << "State created at " << state << std::endl;
 			
-			return *state;
+			return state;
 		}
 		
 		template <typename ConditionType>
-		void AddLink(BaseState& fromState, BaseState& toState) // const fromState?
+		ConditionType* AddLink(BaseState* fromState, BaseState* toState) // const fromState?
 		{
-			std::cout << "Finding state at " << &fromState << std::endl;
-			
-			LinkMap::iterator pair = linkMap.find(&fromState);
+			std::cout << "Finding state at " << fromState << std::endl;
+
+			LinkMap::iterator pair = linkMap.find(fromState);
 			if (pair == linkMap.end())
 			{
 				std::cerr << "Unknown state" << std::endl;
-				return;
+				return nullptr;
 			}
-			
-			pair->second.push_back(std::make_pair(new ConditionType(), &toState));
+			ConditionType* condition = new ConditionType();
+
+			pair->second.push_back(std::make_pair(condition, toState));
+
+			return condition;
 		}
 		
-		void Start()
+		void Start(BaseState* initialState)
 		{
+			if (running)
+			{
+				LOG_ERROR("State machine is already running.");
+				return;
+			}
+
 			if (linkMap.size() == 0)
 			{
-				std::cerr << "Please add states." << std::endl;
+				LOG_ERROR("Please add states.");
 				return;
 			}
 			
-			Transit(*(linkMap.begin()->first));
-			
-			while (true)
+			Transit(initialState);
+
+			callbackService.AddUpdatable(*this);
+
+			running = true;
+		}
+
+		void Stop()
+		{
+			if (!running)
 			{
-				std::optional<StateLink*> activeLink = PollLinks();
-				
-				if (activeLink.has_value())
+				LOG_ERROR("Tried to stop a non running state machine.");
+				return;
+			}
+
+			callbackService.RemoveUpdatable(*this);
+			running = false;
+		}
+
+		void Update()
+		{
+			std::optional<StateLink*> activeLink = PollLinks();
+
+			if (activeLink.has_value())
+			{
+				BaseState* nextState = activeLink.value()->second;
+
+				if (nextState != nullptr)
 				{
-					BaseState* nextState = activeLink.value()->second;
-					
-					if (nextState != nullptr)
-					{
-						Transit(*nextState);
-					}
-				}
-				
-				char c;
-				std::cout << "Quit? y/n: ";
-				std::cin >> c;
-				if (c == 'y')
-				{
-					break;
+					Transit(nextState);
 				}
 			}
 		}
 
 	protected:
-		void Transit(BaseState& state)
+		void Transit(BaseState* state)
 		{
-			if (linkMap.count(&state) == 0)
+			if (linkMap.count(state) == 0)
 			{
 				std::cerr << "Unknown state" << std::endl;
 				return;
 			}
 			
-			if (currentState != nullptr)
+			if (CurrentState != nullptr)
 			{
-				for (auto stateLink : linkMap.at(currentState))
+				for (auto stateLink : linkMap.at(CurrentState))
 				{
 					stateLink.first->OnDeactivate();
 				}
-				currentState->Exit();
+				CurrentState->Exit();
 			}
 			
-			currentState = &state;
-			currentState->Enter();
-			for (auto stateLink : linkMap.at(currentState))
+			CurrentState = state;
+			CurrentState->Enter();
+			for (auto stateLink : linkMap.at(CurrentState))
 			{
 				stateLink.first->OnActivate();
 			}
@@ -121,11 +148,12 @@ namespace Utils
 
 	private:
 		LinkMap linkMap;
-		BaseState* currentState;
+		Utils::CallbackService callbackService;
+		bool running;
 		
 		std::optional<StateLink*> PollLinks()
 		{
-			std::vector<StateLink>& links = linkMap.at(currentState);
+			std::vector<StateLink>& links = linkMap.at(CurrentState);
 			std::vector<StateLink>::iterator it = std::find_if(links.begin(),
 															   links.end(),
 															   [] (const StateLink& s) { return s.first->IsValid(); });
