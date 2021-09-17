@@ -15,6 +15,18 @@ void XmlElement::RemoveChild(std::shared_ptr<XmlElement> child)
 	Children.remove(child);
 }
 
+std::optional<const std::string> XmlElement::TryGetAttribute(const std::string& name)
+{
+	std::map<std::string, std::string>::iterator it = Attributes.find(name);
+
+	if (it == Attributes.end())
+	{
+		return std::nullopt;
+	}
+
+	return it->second;
+}
+
 std::string XmlElement::GetDebugInfo()
 {
 	std::string info = "Tag: '" + Tag + "'";

@@ -5,6 +5,7 @@
 #include <map>
 #include <list>
 #include <string>
+#include <optional>
 
 class XmlElement
 {
@@ -21,6 +22,7 @@ public:
 	std::string GetDebugInfo();
 	void AddChild(std::shared_ptr<XmlElement> child);
 	void RemoveChild(std::shared_ptr<XmlElement> child);
+	std::optional<const std::string> TryGetAttribute(const std::string& name);
 
 private:
 	inline static int nextID = 0;

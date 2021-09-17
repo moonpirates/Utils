@@ -165,9 +165,9 @@
   <ItemGroup>
     <ClCompile Include="src\StateMachine\TestData\OffState.cpp" />
     <ClCompile Include="src\StateMachine\TestData\OnState.cpp" />
-    <ClCompile Include="src\StateMachine\Tests.cpp" />
+    <ClCompile Include="src\StateMachine\StateMachineTests.cpp" />
     <ClCompile Include="src\StateMachine\TestData\ToggleSwitchCondition.cpp" />
-    <ClCompile Include="src\XmlParser\Tests.cpp" />
+    <ClCompile Include="src\XmlParser\XmlParserTests.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\StateMachine\TestData\OffState.h" />

@@ -24,10 +24,10 @@
     <ClCompile Include="src\StateMachine\TestData\ToggleSwitchCondition.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\StateMachine\Tests.cpp">
+    <ClCompile Include="src\StateMachine\StateMachineTests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\XmlParser\Tests.cpp">
+    <ClCompile Include="src\XmlParser\XmlParserTests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
