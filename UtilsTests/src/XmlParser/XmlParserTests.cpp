@@ -98,17 +98,3 @@ TEST_F(XmlParserTest, NumChildrenCorrect)
 	 Root->RemoveChild(Child);
 	 EXPECT_EQ(Root->GetNumChildren(), 0);
  }
-
- TEST(XmlElementTests, ClearsChildrenMemortUponDestruction)
- {
-	 XmlElement* root = new XmlElement();
-	 XmlElement* child = root->AddChild();
-
-	 std::cout << child << std::endl;
-
-	 delete root;
-
-	 std::cout << "Testing: " << child << std::endl;
-
-	 EXPECT_EQ(child, nullptr);
- }

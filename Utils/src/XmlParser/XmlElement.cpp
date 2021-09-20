@@ -13,10 +13,6 @@ XmlElement::~XmlElement()
 {
 	for (XmlElement* child : Children)
 	{
-		XmlElement* cpy = child;
-		std::cout << cpy << std::endl;
-		cpy = nullptr;
-		std::cout << cpy << std::endl;
 		delete child;	
 	}
 }
