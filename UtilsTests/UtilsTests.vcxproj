@@ -167,6 +167,7 @@
     <ClCompile Include="src\StateMachine\TestData\OnState.cpp" />
     <ClCompile Include="src\StateMachine\StateMachineTests.cpp" />
     <ClCompile Include="src\StateMachine\TestData\ToggleSwitchCondition.cpp" />
+    <ClCompile Include="src\Systems\ComponentsTests.cpp" />
     <ClCompile Include="src\XmlParser\XmlParserTests.cpp" />
   </ItemGroup>
   <ItemGroup>

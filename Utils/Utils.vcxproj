@@ -167,6 +167,8 @@
     <ClInclude Include="src\StateMachine\BaseState.h" />
     <ClInclude Include="src\StateMachine\StateMachine.h" />
     <ClInclude Include="src\Systems\CallbackService.h" />
+    <ClInclude Include="src\Systems\Components\Component.h" />
+    <ClInclude Include="src\Systems\Components\Components.h" />
     <ClInclude Include="src\Systems\Renderable.h" />
     <ClInclude Include="src\Systems\Updatable.h" />
     <ClInclude Include="src\TimeUtil.h" />
