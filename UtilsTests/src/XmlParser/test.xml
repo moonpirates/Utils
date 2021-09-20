@@ -1,6 +1,6 @@
 <root toot="honk">
 	<childA id="childA" class="a class">
-		<grandchild>kleinkindcontent</grandchild>
+		<grandchild>grandchildcontent</grandchild>
 	</childA>
 	<childB id="childB">
 		contentB

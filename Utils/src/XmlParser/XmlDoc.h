@@ -8,9 +8,13 @@
 class XmlDoc
 {
 public:
+	XmlElement* Root;
+
 	XmlDoc();
-	std::shared_ptr<XmlElement> Root;
+	~XmlDoc();
 	std::string GetDebugInfo();
+
 private:
-	void RecursiveLogElement(std::shared_ptr<XmlElement> element, int depth, std::string& debugInfo);
+
+	void RecursiveLogElement(XmlElement* element, int depth, std::string& debugInfo);
 };

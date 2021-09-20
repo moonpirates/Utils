@@ -12,12 +12,12 @@
 class Lexer
 {
 public:
-	XmlDoc Parse(std::string path);
+	XmlDoc* Parse(std::string path);
 private:
 	std::string ReadFile(std::string path);
 	void TrimLeft(std::string& s);
 	void TrimRight(std::string& s);
 	void Trim(std::string& s);
 	void Sanitize(std::string& s);
-	void ParseMarkup(std::string markup, std::shared_ptr<XmlElement> element);
+	void ParseMarkup(std::string markup, XmlElement* element);
 };

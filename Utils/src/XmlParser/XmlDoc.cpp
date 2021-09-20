@@ -1,8 +1,13 @@
 #include "XmlDoc.h"
 
-XmlDoc::XmlDoc()
+XmlDoc::XmlDoc() :
+	Root(new XmlElement())
 {
-	Root = std::make_shared<XmlElement>(nullptr);
+}
+
+XmlDoc::~XmlDoc()
+{
+	delete Root;
 }
 
 std::string XmlDoc::GetDebugInfo()
@@ -13,15 +18,15 @@ std::string XmlDoc::GetDebugInfo()
 	return debugInfo;
 }
 
-void XmlDoc::RecursiveLogElement(std::shared_ptr<XmlElement> element, int depth, std::string& debugInfo)
+void XmlDoc::RecursiveLogElement(XmlElement* element, int depth, std::string& debugInfo)
 {
 	std::string tabs = std::string(depth, '\t');
 	debugInfo += tabs + element->GetDebugInfo() + "\n";
 
-	if (element->Children.size() > 0)
+	if (element->GetNumChildren() > 0)
 	{
 		depth++;
-		std::list<std::shared_ptr<XmlElement>>::iterator it;
+		XmlElement::ElementsContainer::iterator it;
 		for (it = element->Children.begin(); it != element->Children.end(); it++)
 		{
 			RecursiveLogElement(*it, depth, debugInfo);

@@ -1,17 +1,17 @@
 #include "Lexer.h"
 
-XmlDoc Lexer::Parse(std::string path)
+XmlDoc* Lexer::Parse(std::string path)
 {
 	std::string xml = ReadFile(path);
 
-	XmlDoc xmlDoc;
+	XmlDoc* xmlDoc = new XmlDoc();
 
 	std::string buffer;
 	int depth = -1;
 	bool readingMarkup = false;
 	bool readingContent = false;
 
-	std::shared_ptr<XmlElement> currentElement = xmlDoc.Root;
+	XmlElement* currentElement = xmlDoc->Root;
 	std::string::size_type numChars = xml.length();
 
 	for (int i = 0; i < numChars; i++)
@@ -32,12 +32,7 @@ XmlDoc Lexer::Parse(std::string path)
 
 		if (openingMarkup)
 		{
-			std::shared_ptr<XmlElement> newElement = std::make_shared<XmlElement>(currentElement);
-
-			if (currentElement != nullptr)
-			{
-				currentElement->AddChild(newElement);
-			}
+			XmlElement* newElement = currentElement->AddChild();
 
 			currentElement = newElement;
 
@@ -139,7 +134,7 @@ void Lexer::Sanitize(std::string& s)
 	Trim(s);
 }
 
-void Lexer::ParseMarkup(std::string markup, std::shared_ptr<XmlElement> element)
+void Lexer::ParseMarkup(std::string markup, XmlElement* element)
 {
 	element->Markup = markup;
 

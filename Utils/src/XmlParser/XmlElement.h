@@ -10,19 +10,28 @@
 class XmlElement
 {
 public:
+	using ElementsContainer = std::list<XmlElement*>;
+	using AttributesContainer = std::map<std::string, std::string>;
+
 	std::string Markup;
 	std::string Tag;
-	std::map<std::string, std::string> Attributes;
 	std::string Content;
-	std::shared_ptr<XmlElement> Parent;
-	std::list<std::shared_ptr<XmlElement>> Children;
+	XmlElement* Parent;
+	AttributesContainer Attributes;
+	ElementsContainer Children;
 	int ID = 0;
 
-	XmlElement(std::shared_ptr<XmlElement> parent);
+	XmlElement();
+	XmlElement(XmlElement* parent);
+	~XmlElement();
+	XmlElement* operator[](int);
 	std::string GetDebugInfo();
-	void AddChild(std::shared_ptr<XmlElement> child);
-	void RemoveChild(std::shared_ptr<XmlElement> child);
-	std::optional<const std::string> TryGetAttribute(const std::string& name);
+	XmlElement* AddChild();
+	void RemoveChild(XmlElement* child);
+	size_t GetNumChildren() const;
+	XmlElement* GetChildAt(unsigned int);
+	size_t GetNumAttributes() const;
+	std::optional<const std::string> TryGetAttribute(const std::string& name) const;
 
 private:
 	inline static int nextID = 0;

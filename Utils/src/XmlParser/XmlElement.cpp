@@ -1,23 +1,70 @@
 #include "XmlElement.h"
 
-XmlElement::XmlElement(std::shared_ptr<XmlElement> parent) : Parent(parent), ID(nextID++)
+XmlElement::XmlElement() : XmlElement(nullptr)
 {
-	Children = std::list<std::shared_ptr<XmlElement>>();
 }
 
-void XmlElement::AddChild(std::shared_ptr<XmlElement> child)
+XmlElement::XmlElement(XmlElement* parent) :
+	Parent(parent), ID(nextID++), Children(std::list<XmlElement*>())
 {
-	Children.push_back(child);
 }
 
-void XmlElement::RemoveChild(std::shared_ptr<XmlElement> child)
+XmlElement::~XmlElement()
+{
+	for (XmlElement* child : Children)
+	{
+		XmlElement* cpy = child;
+		std::cout << cpy << std::endl;
+		cpy = nullptr;
+		std::cout << cpy << std::endl;
+		delete child;	
+	}
+}
+
+XmlElement* XmlElement::operator[](int index)
+{
+	return GetChildAt(index);
+}
+
+XmlElement* XmlElement::AddChild()
+{
+	return Children.emplace_back(new XmlElement(this));
+}
+
+void XmlElement::RemoveChild(XmlElement* child)
 {
 	Children.remove(child);
 }
 
-std::optional<const std::string> XmlElement::TryGetAttribute(const std::string& name)
+size_t XmlElement::GetNumChildren() const
 {
-	std::map<std::string, std::string>::iterator it = Attributes.find(name);
+	return Children.size();
+}
+
+XmlElement* XmlElement::GetChildAt(unsigned int index)
+{
+	if (Children.size() == 0)
+	{
+		return nullptr;
+	}
+
+	if (index > Children.size() - 1)
+	{
+		throw std::out_of_range("Out of range on Children: " + index);
+	}
+
+	XmlElement* el = *std::next(Children.begin(), index);
+	return el;
+}
+
+size_t XmlElement::GetNumAttributes() const
+{
+	return Attributes.size();
+}
+
+std::optional<const std::string> XmlElement::TryGetAttribute(const std::string& name) const
+{
+	const AttributesContainer::const_iterator it = Attributes.find(name);
 
 	if (it == Attributes.end())
 	{
