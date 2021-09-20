@@ -1,5 +1,7 @@
 #include "XmlDoc.h"
 
+using namespace Utils;
+
 XmlDoc::XmlDoc() :
 	Root(new XmlElement())
 {

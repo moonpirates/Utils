@@ -1,5 +1,7 @@
 #include "Lexer.h"
 
+using namespace Utils;
+
 XmlDoc* Lexer::Parse(std::string path)
 {
 	std::string xml = ReadFile(path);

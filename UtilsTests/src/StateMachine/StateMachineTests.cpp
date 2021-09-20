@@ -12,7 +12,6 @@ TEST(StateMachine, StartsAtGivenState)
 	switchStateMachine.Stop();
 }
 
-
 TEST(StateMachine, ValidConditionTransitionsCorrectly)
 {
 	SwitchStateMachine switchStateMachine;

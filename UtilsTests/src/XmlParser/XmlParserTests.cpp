@@ -6,17 +6,17 @@ class XmlParserTest : public ::testing::Test
 {
 protected:
 	const std::string TEST_PATH = "..\\..\\..\\..\\Utils\\UtilsTests\\src\\XmlParser\\test.xml";
-	XmlDoc* Doc;
-	XmlElement* FirstElement;
-	XmlElement* FirstChild;
-	XmlElement* FirstGrandchild;
+	Utils::XmlDoc* Doc;
+	Utils::XmlElement* FirstElement;
+	Utils::XmlElement* FirstChild;
+	Utils::XmlElement* FirstGrandchild;
 
 	void SetUp() override
 	{
 		::testing::GTEST_FLAG(catch_exceptions) = false;
 
 		ASSERT_TRUE(std::filesystem::exists(TEST_PATH));
-		Lexer lexer;
+		Utils::Lexer lexer;
 		Doc = lexer.Parse(TEST_PATH);
 		FirstElement = (*Doc->Root)[0];
 		FirstChild = (*FirstElement)[0];
@@ -27,12 +27,12 @@ protected:
 class XmlElementTest : public ::testing::Test
 {
 protected:
-	XmlElement* Root;
-	XmlElement* Child;
+	Utils::XmlElement* Root;
+	Utils::XmlElement* Child;
 
 	void SetUp() override
 	{
-		Root = new XmlElement();
+		Root = new Utils::XmlElement();
 		Child = Root->AddChild();
 	}
 
@@ -84,7 +84,7 @@ TEST_F(XmlParserTest, NumChildrenCorrect)
 
  TEST_F(XmlParserTest, ParsesEmptyElementTag)
  {
-	 XmlElement* emptyElementElement = FirstElement->GetChildAt(2);
+	 Utils::XmlElement* emptyElementElement = FirstElement->GetChildAt(2);
 	 EXPECT_EQ(emptyElementElement->Tag, "childC");
  }
 

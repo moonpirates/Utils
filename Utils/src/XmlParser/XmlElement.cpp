@@ -1,5 +1,7 @@
 #include "XmlElement.h"
 
+using namespace Utils;
+
 XmlElement::XmlElement() : XmlElement(nullptr)
 {
 }

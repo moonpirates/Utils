@@ -5,16 +5,19 @@
 #include <memory>
 #include "XmlElement.h"
 
-class XmlDoc
+namespace Utils
 {
-public:
-	XmlElement* Root;
+	class XmlDoc
+	{
+	public:
+		XmlElement* Root;
 
-	XmlDoc();
-	~XmlDoc();
-	std::string GetDebugInfo();
+		XmlDoc();
+		~XmlDoc();
+		std::string GetDebugInfo();
 
-private:
+	private:
 
-	void RecursiveLogElement(XmlElement* element, int depth, std::string& debugInfo);
-};
+		void RecursiveLogElement(XmlElement* element, int depth, std::string& debugInfo);
+	};
+}
