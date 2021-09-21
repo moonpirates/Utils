@@ -169,7 +169,10 @@
     <ClInclude Include="src\Systems\CallbackService.h" />
     <ClInclude Include="src\Systems\Components\Component.h" />
     <ClInclude Include="src\Systems\Components\Components.h" />
+    <ClInclude Include="src\Systems\GameObject.h" />
     <ClInclude Include="src\Systems\Renderable.h" />
+    <ClInclude Include="src\Systems\Components\Transform.h" />
+    <ClInclude Include="src\Systems\Components\Transform2D.h" />
     <ClInclude Include="src\Systems\Updatable.h" />
     <ClInclude Include="src\TimeUtil.h" />
     <ClInclude Include="src\XmlParser\Lexer.h" />
