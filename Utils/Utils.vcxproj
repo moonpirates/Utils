@@ -160,6 +160,9 @@
     <ClInclude Include="src\Events\GlobalEvents.h" />
     <ClInclude Include="src\Logging\Logger.h" />
     <ClInclude Include="src\Macros\Macros.h" />
+    <ClInclude Include="src\Math\Quaternion.h" />
+    <ClInclude Include="src\Math\Vector2.h" />
+    <ClInclude Include="src\Math\Vector3.h" />
     <ClInclude Include="src\Services\BaseService.h" />
     <ClInclude Include="src\Services\GlobalServiceLocator.h" />
     <ClInclude Include="src\Services\ServiceLocator.h" />
@@ -167,6 +170,7 @@
     <ClInclude Include="src\StateMachine\BaseState.h" />
     <ClInclude Include="src\StateMachine\StateMachine.h" />
     <ClInclude Include="src\Systems\CallbackService.h" />
+    <ClInclude Include="src\Systems\Components\Behaviour.h" />
     <ClInclude Include="src\Systems\Components\Component.h" />
     <ClInclude Include="src\Systems\Components\Components.h" />
     <ClInclude Include="src\Systems\GameObject.h" />
