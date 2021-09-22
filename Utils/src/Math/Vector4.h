@@ -2,7 +2,7 @@
 
 namespace Utils
 {
-	struct Quaternion
+	struct Vector4
 	{
 		float W;
 		float X;

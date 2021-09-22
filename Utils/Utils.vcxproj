@@ -160,7 +160,7 @@
     <ClInclude Include="src\Events\GlobalEvents.h" />
     <ClInclude Include="src\Logging\Logger.h" />
     <ClInclude Include="src\Macros\Macros.h" />
-    <ClInclude Include="src\Math\Quaternion.h" />
+    <ClInclude Include="src\Math\Vector4.h" />
     <ClInclude Include="src\Math\Vector2.h" />
     <ClInclude Include="src\Math\Vector3.h" />
     <ClInclude Include="src\Services\BaseService.h" />

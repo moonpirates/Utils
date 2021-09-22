@@ -38,6 +38,7 @@ namespace Utils
 		int targetFps;
 
 		void OnUpdate();
+		void OnPreRender();
 		void OnRender();
 	};
 }

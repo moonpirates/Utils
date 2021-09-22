@@ -93,6 +93,14 @@ void Utils::CallbackService::OnUpdate()
 	}
 }
 
+void Utils::CallbackService::OnPreRender()
+{
+	for (auto renderable : renderables)
+	{
+		renderable->PreRender();
+	}
+}
+
 void Utils::CallbackService::OnRender()
 {
 	for (auto renderable : renderables)

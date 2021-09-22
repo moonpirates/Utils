@@ -22,7 +22,8 @@ namespace Utils
 		}
 
 		virtual void Update() {};
-		virtual void OnRender() {};
+		virtual void PreRender() {};
+		virtual void Render() {};
 
 	private:
 		CallbackService& callbackService;
