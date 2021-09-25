@@ -5,7 +5,8 @@ namespace Utils
 	class Renderable
 	{
 	public:
-		virtual void PreRender() = 0;
-		virtual void Render() = 0;
+		virtual void PreRender() {};
+		virtual void Render() {};
+		virtual void PostRender() {};
 	};
 }

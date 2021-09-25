@@ -22,7 +22,6 @@ namespace Utils
 		}
 
 		virtual void Update() {};
-		virtual void PreRender() {};
 		virtual void Render() {};
 
 	private:

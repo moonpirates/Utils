@@ -40,6 +40,7 @@ namespace Utils
 		void OnUpdate();
 		void OnPreRender();
 		void OnRender();
+		void OnPostRender();
 	};
 }
 

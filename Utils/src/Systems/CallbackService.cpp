@@ -74,7 +74,9 @@ void Utils::CallbackService::Start()
 			previousStep = now;
 
 			OnUpdate();
+			OnPreRender();
 			OnRender();
+			OnPostRender();
 			frameCount++;
 		}
 	}
@@ -106,5 +108,13 @@ void Utils::CallbackService::OnRender()
 	for (auto renderable : renderables)
 	{
 		renderable->Render();
+	}
+}
+
+void Utils::CallbackService::OnPostRender()
+{
+	for (auto renderable : renderables)
+	{
+		renderable->PostRender();
 	}
 }
