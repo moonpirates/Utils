@@ -4,7 +4,7 @@
 #include "Macros/Macros.h"
 #include "Systems/Components/Component.h"
 #include "Math/Vector3.h"
-#include "Math/Quaternion.h"
+#include "Math/Vector4.h"
 
 namespace Utils
 {
@@ -12,7 +12,7 @@ namespace Utils
 	{
 	public:
 		Vector3 Position;
-		Quaternion Rotation;
+		Vector4 Rotation;
 		Vector3 Scale;
 	};
 }

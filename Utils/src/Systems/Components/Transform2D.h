@@ -10,7 +10,7 @@ namespace Utils
 	class Transform2D : public Transform
 	{
 		Vector2 Position;
-		Quaternion Rotation;
+		Vector4 Rotation;
 		Vector2 Scale;
 	};
 }
