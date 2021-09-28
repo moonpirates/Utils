@@ -26,7 +26,10 @@ namespace Utils
 		template <typename T>
 		T* AddComponent()
 		{
-			return components.AddComponent<T>();
+			T* component = components.AddComponent<T>();
+			component->GameObject = this;
+			component->Transform = transform;
+			return component;
 		}
 
 		template <typename T>
@@ -51,6 +54,26 @@ namespace Utils
 			{
 				delete child;
 			}
+		}
+
+		GameObject* GetChildAtIndex(const size_t index)
+		{
+			if (index < children.size())
+			{
+				return children[index];
+			}
+			
+			return nullptr;
+		}
+
+		size_t GetNumChildren()
+		{
+			return children.size();
+		}
+
+		const std::vector<Utils::Component*> GetAllComponents()
+		{
+			return components.GetComponents<Utils::Component>(true);
 		}
 
 		template <typename T>

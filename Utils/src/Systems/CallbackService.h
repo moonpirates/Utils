@@ -37,10 +37,10 @@ namespace Utils
 		bool running;
 		int targetFps;
 
-		void OnUpdate();
-		void OnPreRender();
-		void OnRender();
-		void OnPostRender();
+		void OnUpdate(const std::set<Utils::Updatable*>& updatables);
+		void OnPreRender(const std::set<Utils::Renderable*>& renderables);
+		void OnRender(const std::set<Utils::Renderable*>& renderables);
+		void OnPostRender(const std::set<Utils::Renderable*>& renderables);
 	};
 }
 

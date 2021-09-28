@@ -155,14 +155,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Colors\Color.h" />
     <ClInclude Include="src\Events\Dispatcher.h" />
     <ClInclude Include="src\Events\Event.h" />
     <ClInclude Include="src\Events\GlobalEvents.h" />
     <ClInclude Include="src\Logging\Logger.h" />
     <ClInclude Include="src\Macros\Macros.h" />
-    <ClInclude Include="src\Math\Vector4.h" />
-    <ClInclude Include="src\Math\Vector2.h" />
-    <ClInclude Include="src\Math\Vector3.h" />
+    <ClInclude Include="src\Math\Vector.h" />
     <ClInclude Include="src\Services\BaseService.h" />
     <ClInclude Include="src\Services\GlobalServiceLocator.h" />
     <ClInclude Include="src\Services\ServiceLocator.h" />
@@ -176,7 +175,6 @@
     <ClInclude Include="src\Systems\GameObject.h" />
     <ClInclude Include="src\Systems\Renderable.h" />
     <ClInclude Include="src\Systems\Components\Transform.h" />
-    <ClInclude Include="src\Systems\Components\Transform2D.h" />
     <ClInclude Include="src\Systems\Scenes\Scene.h" />
     <ClInclude Include="src\Systems\Scenes\SceneService.h" />
     <ClInclude Include="src\Systems\Updatable.h" />
@@ -186,6 +184,8 @@
     <ClInclude Include="src\XmlParser\XmlElement.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Colors\Color.cpp" />
+    <ClCompile Include="src\Macros\Macros.cpp" />
     <ClCompile Include="src\Systems\CallbackService.cpp" />
     <ClCompile Include="src\Systems\Scenes\Scene.cpp" />
     <ClCompile Include="src\Systems\Scenes\SceneService.cpp" />

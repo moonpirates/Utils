@@ -73,10 +73,14 @@ void Utils::CallbackService::Start()
 			//LOG("[" << frameCount << "] deltaTime: " << Utils::TimeUtil::DeltaTime <<  " " << Utils::TimeUtil::TimeSinceStart);
 			previousStep = now;
 
-			OnUpdate();
-			OnPreRender();
-			OnRender();
-			OnPostRender();
+			// Clone, so this set is determined once per step
+			auto updatablesClone = std::set<Utils::Updatable*>(updatables);
+			auto renderablesClone = std::set<Utils::Renderable*>(renderables);
+
+			OnUpdate(updatablesClone);
+			OnPreRender(renderables);
+			OnRender(renderables);
+			OnPostRender(renderables);
 			frameCount++;
 		}
 	}
@@ -87,7 +91,7 @@ void Utils::CallbackService::Stop()
 	running = false;
 }
 
-void Utils::CallbackService::OnUpdate()
+void Utils::CallbackService::OnUpdate(const std::set<Utils::Updatable*>& updatables)
 {
 	for (auto updatable : updatables)
 	{
@@ -95,7 +99,7 @@ void Utils::CallbackService::OnUpdate()
 	}
 }
 
-void Utils::CallbackService::OnPreRender()
+void Utils::CallbackService::OnPreRender(const std::set<Utils::Renderable*>& renderables)
 {
 	for (auto renderable : renderables)
 	{
@@ -103,7 +107,7 @@ void Utils::CallbackService::OnPreRender()
 	}
 }
 
-void Utils::CallbackService::OnRender()
+void Utils::CallbackService::OnRender(const std::set<Utils::Renderable*>& renderables)
 {
 	for (auto renderable : renderables)
 	{
@@ -111,7 +115,7 @@ void Utils::CallbackService::OnRender()
 	}
 }
 
-void Utils::CallbackService::OnPostRender()
+void Utils::CallbackService::OnPostRender(const std::set<Utils::Renderable*>& renderables)
 {
 	for (auto renderable : renderables)
 	{
