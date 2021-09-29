@@ -32,15 +32,15 @@ namespace Utils
 	private:
 		const int DEFAULT_FPS = 60;
 
-		std::set<Updatable*> updatables;
-		std::set<Renderable*> renderables;
+		std::vector<Updatable*> updatables;
+		std::vector<Renderable*> renderables;
 		bool running;
 		int targetFps;
 
-		void OnUpdate(const std::set<Utils::Updatable*>& updatables);
-		void OnPreRender(const std::set<Utils::Renderable*>& renderables);
-		void OnRender(const std::set<Utils::Renderable*>& renderables);
-		void OnPostRender(const std::set<Utils::Renderable*>& renderables);
+		void OnUpdate(const std::vector<Utils::Updatable*>& updatables);
+		void OnPreRender(const std::vector<Utils::Renderable*>& renderables);
+		void OnRender(const std::vector<Utils::Renderable*>& renderables);
+		void OnPostRender(const std::vector<Utils::Renderable*>& renderables);
 	};
 }
 

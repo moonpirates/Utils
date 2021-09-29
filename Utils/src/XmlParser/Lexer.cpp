@@ -14,9 +14,9 @@ XmlDoc* Lexer::Parse(std::string path)
 	bool readingContent = false;
 
 	XmlElement* currentElement = xmlDoc->Root;
-	std::string::size_type numChars = xml.length();
+	size_t numChars = xml.length();
 
-	for (int i = 0; i < numChars; i++)
+	for (size_t i = 0; i < numChars; i++)
 	{
 		char c = xml[i];
 

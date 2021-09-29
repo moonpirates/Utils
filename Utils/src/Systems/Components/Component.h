@@ -15,6 +15,12 @@ namespace Utils
 		GameObject* GameObject;
 		Transform* Transform;
 		
+		Component() :
+			GameObject(nullptr), Transform(nullptr)
+		{
+
+		}
+
 		virtual ~Component() {};
 	};
 

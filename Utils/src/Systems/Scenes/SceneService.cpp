@@ -1,5 +1,10 @@
 #include "SceneService.h"
 
+Utils::SceneService::SceneService() :
+	currentScene(nullptr)
+{
+}
+
 Utils::Scene* Utils::SceneService::LoadScene()
 {
 	if (currentScene != nullptr)

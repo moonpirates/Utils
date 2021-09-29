@@ -33,6 +33,9 @@
     <ClCompile Include="src\Systems\ComponentsTests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Math\MathTests.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\StateMachine\TestData\OffState.h">

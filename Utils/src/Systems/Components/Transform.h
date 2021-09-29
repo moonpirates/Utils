@@ -15,5 +15,11 @@ namespace Utils
 		Vector4 Rotation;
 		Vector3 Scale;
 		Vector2 Size;
+
+		Transform() :
+			Position(), Rotation(), Scale(), Size()
+		{
+
+		}
 	};
 }

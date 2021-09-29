@@ -163,6 +163,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Math\MathTests.cpp" />
     <ClCompile Include="src\StateMachine\TestData\OffState.cpp" />
     <ClCompile Include="src\StateMachine\TestData\OnState.cpp" />
     <ClCompile Include="src\StateMachine\StateMachineTests.cpp" />

@@ -1,8 +1,8 @@
 #include "CallbackService.h"
 
 Utils::CallbackService::CallbackService() : 
-	updatables(std::set<Updatable*>()), 
-	renderables(std::set<Renderable*>()),
+	updatables(std::vector<Updatable*>()),
+	renderables(std::vector<Renderable*>()),
 	running(false), 
 	targetFps(DEFAULT_FPS)
 {
@@ -10,22 +10,22 @@ Utils::CallbackService::CallbackService() :
 
 void Utils::CallbackService::AddUpdatable(Updatable& updatable)
 {
-	updatables.insert(&updatable);
+	updatables.push_back(&updatable);
 }
 
 void Utils::CallbackService::RemoveUpdatable(Updatable& updatable)
 {
-	updatables.erase(&updatable);
+	static_cast<void>(std::remove(updatables.begin(), updatables.end(), &updatable));
 }
 
 void Utils::CallbackService::AddRenderable(Renderable& renderable)
 {
-	renderables.insert(&renderable);
+	renderables.push_back(&renderable);
 }
 
 void Utils::CallbackService::RemoveRenderable(Renderable& renderable)
 {
-	renderables.erase(&renderable);
+	static_cast<void>(std::remove(renderables.begin(), renderables.end(), &renderable));
 }
 
 int Utils::CallbackService::GetTargetFps()
@@ -74,8 +74,8 @@ void Utils::CallbackService::Start()
 			previousStep = now;
 
 			// Clone, so this set is determined once per step
-			auto updatablesClone = std::set<Utils::Updatable*>(updatables);
-			auto renderablesClone = std::set<Utils::Renderable*>(renderables);
+			auto updatablesClone = std::vector<Utils::Updatable*>(updatables);
+			auto renderablesClone = std::vector<Utils::Renderable*>(renderables);
 
 			OnUpdate(updatablesClone);
 			OnPreRender(renderables);
@@ -91,7 +91,7 @@ void Utils::CallbackService::Stop()
 	running = false;
 }
 
-void Utils::CallbackService::OnUpdate(const std::set<Utils::Updatable*>& updatables)
+void Utils::CallbackService::OnUpdate(const std::vector<Utils::Updatable*>& updatables)
 {
 	for (auto updatable : updatables)
 	{
@@ -99,7 +99,7 @@ void Utils::CallbackService::OnUpdate(const std::set<Utils::Updatable*>& updatab
 	}
 }
 
-void Utils::CallbackService::OnPreRender(const std::set<Utils::Renderable*>& renderables)
+void Utils::CallbackService::OnPreRender(const std::vector<Utils::Renderable*>& renderables)
 {
 	for (auto renderable : renderables)
 	{
@@ -107,7 +107,7 @@ void Utils::CallbackService::OnPreRender(const std::set<Utils::Renderable*>& ren
 	}
 }
 
-void Utils::CallbackService::OnRender(const std::set<Utils::Renderable*>& renderables)
+void Utils::CallbackService::OnRender(const std::vector<Utils::Renderable*>& renderables)
 {
 	for (auto renderable : renderables)
 	{
@@ -115,7 +115,7 @@ void Utils::CallbackService::OnRender(const std::set<Utils::Renderable*>& render
 	}
 }
 
-void Utils::CallbackService::OnPostRender(const std::set<Utils::Renderable*>& renderables)
+void Utils::CallbackService::OnPostRender(const std::vector<Utils::Renderable*>& renderables)
 {
 	for (auto renderable : renderables)
 	{

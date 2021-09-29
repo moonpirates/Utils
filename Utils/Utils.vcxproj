@@ -155,6 +155,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Math\Math.h" />
     <ClInclude Include="src\Colors\Color.h" />
     <ClInclude Include="src\Events\Dispatcher.h" />
     <ClInclude Include="src\Events\Event.h" />
@@ -184,6 +185,7 @@
     <ClInclude Include="src\XmlParser\XmlElement.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Math\Math.cpp" />
     <ClCompile Include="src\Colors\Color.cpp" />
     <ClCompile Include="src\Macros\Macros.cpp" />
     <ClCompile Include="src\Systems\CallbackService.cpp" />

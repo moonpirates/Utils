@@ -8,6 +8,7 @@ namespace Utils
 	class SceneService : public BaseService
 	{
 	public:
+		SceneService();
 		Scene* LoadScene();
 		void UnloadScene(const Scene& scene);
 		Scene* GetCurrentScene();
