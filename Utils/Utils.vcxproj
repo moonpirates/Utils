@@ -188,6 +188,7 @@
     <ClCompile Include="src\Math\Math.cpp" />
     <ClCompile Include="src\Colors\Color.cpp" />
     <ClCompile Include="src\Macros\Macros.cpp" />
+    <ClCompile Include="src\Math\Vector.cpp" />
     <ClCompile Include="src\Systems\CallbackService.cpp" />
     <ClCompile Include="src\Systems\Scenes\Scene.cpp" />
     <ClCompile Include="src\Systems\Scenes\SceneService.cpp" />
